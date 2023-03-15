@@ -1,0 +1,12 @@
+uuid: 4f6ad43e-c199-4a00-8eb1-f9cc48408ba9
+langcode: en
+status: true
+dependencies: {  }
+id: company_name
+label: 'Company name'
+category: ''
+likert: false
+options: |-
+  TCS: TCS
+  Narolac: Narolac
+  UPL: UPL

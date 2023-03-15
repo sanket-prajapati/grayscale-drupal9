@@ -1,0 +1,69 @@
+learn_services.CustomServiceForm:
+  path: '/custom-form-by-service'
+  defaults:
+    _form: '\Drupal\learn_services\Form\withoutDiForm'
+    _title: 'Form through Servies'
+  requirements:
+    _permission: 'access content'
+
+learn_services.getFromContoller:
+  path: '/Hello-world-by-service'
+  defaults:
+    # _form: '\Drupal\learn_services\Form\withoutDiForm'
+    _controller: '\Drupal\learn_services\Controller\HelloWorldSalutation2::getFromContoller'
+    _title: 'Through Service get data from HelloWordSalution class by using controller'
+  requirements:
+    _permission: 'access content'
+    # _custom_access: '\Drupal\learn_services\Access\HelloWorldAccess::access'
+    # _custom_access: '\Drupal\learn_services\Controller\HelloWorldSalutation2::access'
+    # _hello_world_access_check: 'TRUE'
+
+learn_services.greeting_form:
+  path: '/admin/config/salutation-configuration'
+  defaults:
+    _form: Drupal\learn_services\Form\SalutationConfigurationForm
+    _title: 'Salutation configuration'
+  requirements:
+    _permission: 'administer site configuration'
+    
+learn_services.getFactoryData:
+  path: '/admin/config/salutation-configuration2'
+  defaults:
+    _controller: 'Drupal\learn_services\Controller\serviceSalutation::getFactoryData'
+    _title: 'Salutation configuration'
+  requirements:
+    _permission: 'administer site configuration'
+
+
+learn_services.demoLink:
+  path: '/demo-link'
+  defaults:
+    _controller: '\Drupal\learn_services\Controller\HelloWorldSalutation2::demoLink'
+    _title: 'check demo link'
+  requirements:
+    _permission: 'administer site configuration'
+
+learn_services.getWithLibrary:
+  path: '/with-library'
+  defaults:
+    _controller: '\Drupal\learn_services\Controller\HelloWorldSalutation2::getWithLibrary'
+    _title: 'check library load in controller class method'
+  requirements:
+    _permission: 'administer site configuration'
+
+learn_services.image_form:
+  path: '/admin/config/image-configuration'
+  defaults:
+    _form: Drupal\learn_services\Form\MyImgConfigForm
+    _title: 'Image file configuration'
+  requirements:
+    _permission: 'administer site configuration'
+
+learn_services.hide_block:
+  path: '/hide-block'
+  defaults:
+    _controller: Drupal\learn_services\Controller\HelloWorldSalutation2::hideBlock
+  requirements:
+    _permission: 'access content' 
+
+    

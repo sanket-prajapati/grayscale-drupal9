@@ -1,0 +1,23 @@
+uuid: 8c27b910-8e1a-4697-9ec0-12233779b494
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_btn_link
+    - paragraphs.paragraphs_type.grayscale_must_para
+  module:
+    - link
+id: paragraph.grayscale_must_para.field_btn_link
+field_name: field_btn_link
+entity_type: paragraph
+bundle: grayscale_must_para
+label: 'Btn link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 16
+field_type: link

@@ -1,0 +1,7 @@
+name: Player details module
+description: Information about players
+core_version_requirement: ^8 || ^9
+type: module
+package: Custom modules
+
+

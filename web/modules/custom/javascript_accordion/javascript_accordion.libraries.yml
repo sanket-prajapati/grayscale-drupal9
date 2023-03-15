@@ -1,0 +1,7 @@
+javascript_accordion.accordion:
+  js: 
+    js/accordion.js: {}
+  css:
+    component:
+      css/accordion.css: {}
+  

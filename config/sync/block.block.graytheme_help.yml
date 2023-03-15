@@ -1,0 +1,22 @@
+uuid: 9cb6eeca-0bb0-47ab-8f1d-7b17ecf7d257
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - graytheme
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: graytheme_help
+theme: graytheme
+region: help
+weight: -7
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

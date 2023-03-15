@@ -1,0 +1,63 @@
+practice_module.databaseApi:
+  path: '/database-api'
+  defaults: 
+    _controller: '\Drupal\practice_module\Controller\PracticeContoller::databaseApi'
+    _title: 'Alter Query'
+  requirements:
+    _permission: 'access content'
+    # _permission: "my custom permission+administer site configuration"
+    # _permission: "my custom permission,my other permission"
+
+
+practice_module.ckeckUser:
+  path: '/check-user'
+  defaults: 
+    _controller: '\Drupal\practice_module\Controller\PracticeContoller::ckeckUser'
+    _title: 'check user'
+  requirements:
+    _permission: 'access content'
+
+
+practice_module.without_di_form:
+  path: '/without-di'
+  defaults: 
+    _form: '\Drupal\practice_module\Form\without_di_form'
+    _title: 'Without di Form'
+  requirements:
+    _permission: 'access content'
+
+practice_module.with_di_form:
+  path: '/with-di'
+  defaults: 
+    _form: '\Drupal\practice_module\Form\with_di_form'
+    _title: 'With di Form'
+  requirements:
+    _permission: 'access content'
+
+practice_module.loadUser:
+  path: '/load-user'
+  defaults: 
+    _controller: '\Drupal\practice_module\Controller\PracticeContoller::loadUser'
+    _title: 'See User list'
+  requirements:
+    _permission: 'access content'
+
+practice_module.accessUser:
+  path: '/allow-user'
+  defaults: 
+    _controller: '\Drupal\practice_module\Controller\PracticeContoller::access'
+    _title: 'Access teacher'
+  requirements:
+    _permission: 'access content'
+  options:
+    _user_types:
+    #  - manager
+     - teachers
+
+practice_module.imgStayle:
+  path: '/img-style'
+  defaults: 
+    _controller: '\Drupal\practice_module\Controller\PracticeContoller::imgStayle'
+    _title: 'Image style added'
+  requirements:
+    _permission: 'access content'

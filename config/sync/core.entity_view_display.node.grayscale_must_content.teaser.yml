@@ -1,0 +1,26 @@
+uuid: 26cffb44-3e94-436b-a2ea-1a43e9eb18ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.grayscale_must_content.field_btn_link
+    - field.field.node.grayscale_must_content.field_description
+    - field.field.node.grayscale_must_content.field_para_inside_content
+    - node.type.grayscale_must_content
+  module:
+    - user
+id: node.grayscale_must_content.teaser
+targetEntityType: node
+bundle: grayscale_must_content
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_btn_link: true
+  field_description: true
+  field_para_inside_content: true

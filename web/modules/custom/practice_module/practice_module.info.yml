@@ -1,0 +1,7 @@
+name: Practice module
+description: All about drupal learning
+core_version_requirement: ^8 || ^9
+type: module
+package: Custom modules
+
+

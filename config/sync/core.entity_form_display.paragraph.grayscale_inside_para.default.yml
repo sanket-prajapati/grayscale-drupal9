@@ -1,0 +1,44 @@
+uuid: 4d408158-e96e-4ba8-b807-848daf7ee4a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grayscale_inside_para.field_sub_description
+    - field.field.paragraph.grayscale_inside_para.field_sub_image
+    - field.field.paragraph.grayscale_inside_para.field_subtitle
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.grayscale_inside_para
+  module:
+    - image
+id: paragraph.grayscale_inside_para.default
+targetEntityType: paragraph
+bundle: grayscale_inside_para
+mode: default
+content:
+  field_sub_description:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_sub_image:
+    type: image_image
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_subtitle:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

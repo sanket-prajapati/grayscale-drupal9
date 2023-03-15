@@ -1,0 +1,5 @@
+entity.example_impoter.add_form:
+  route_name: entity.example_impoter.add_form
+  title: 'Add Example impoter'
+  appears_on:
+    - entity.example_impoter.collection

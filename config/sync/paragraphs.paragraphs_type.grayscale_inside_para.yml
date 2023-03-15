@@ -1,0 +1,10 @@
+uuid: 93f7ac62-15a8-4f17-9804-9fe28be17936
+langcode: en
+status: true
+dependencies: {  }
+id: grayscale_inside_para
+label: 'Grayscale inside para'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

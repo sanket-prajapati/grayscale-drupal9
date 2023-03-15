@@ -1,0 +1,36 @@
+services:
+  learn_services.dbinsert:
+    class: Drupal\learn_services\services\Db_insert
+    arguments: ['@database']
+    # arguments: ['@database','@config.factory']
+
+  hello_world.salutation:
+    class: Drupal\learn_services\HelloWorldSalutation
+    arguments: ['@config.factory']
+    tags:
+      - {name: tag_name}
+
+  # learn_services.channels_logger:
+  #   class: Drupal\learn_services\Form\SalutationConfigurationForm
+  #   arguments: ['@logger.factory']
+  #   tags:
+  #     - {name: tag_name}
+
+  # learn_services.logger.channel.learn_services:
+  #   parent: logger.channel_base
+  #   arguments: ['learn_services']//Not works use in withoutDiForm
+
+  # hello_world.access_checker:
+  #   class: Drupal\learn_services\Access\HelloWorldAccess
+  #   arguments: ['@config.factory']
+  #   tags:
+  #   - { name: access_check, applies_to: _hello_world_access_check } 
+
+  # myservice_logger_channels:
+  #   class: Drupal\learn_services\services\myLogger
+  #   arguments: ['@logger.factory']
+
+  logger.channel.mymodule:
+    parent: logger.channel_base
+    arguments: ['mymodule']
+    

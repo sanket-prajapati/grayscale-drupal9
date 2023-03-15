@@ -1,0 +1,55 @@
+uuid: df7a41e0-ab74-46a7-8df2-7986f59eddcb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grayscale_must_para.field_btn_link
+    - field.field.paragraph.grayscale_must_para.field_description
+    - field.field.paragraph.grayscale_must_para.field_grayscale_inside
+    - field.field.paragraph.grayscale_must_para.field_title
+    - paragraphs.paragraphs_type.grayscale_must_para
+  module:
+    - entity_reference_revisions
+    - link
+id: paragraph.grayscale_must_para.default
+targetEntityType: paragraph
+bundle: grayscale_must_para
+mode: default
+content:
+  field_btn_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_grayscale_inside:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

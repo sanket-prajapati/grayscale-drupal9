@@ -1,0 +1,22 @@
+uuid: 466d2b2c-8ae0-40cb-a3fc-4b5c7e17261c
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - graytheme
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: graytheme_powered
+theme: graytheme
+region: navigation
+weight: -3
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,8 @@
+
+# Example impoter menu items definition
+entity.example_impoter.collection:
+  title: 'Example impoter'
+  route_name: entity.example_impoter.collection
+  description: 'List Example impoter (bundles)'
+  parent: system.admin_structure
+  weight: 99

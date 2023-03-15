@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+function learn_services_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+ if ($form_id === 'salutation_configuration_form') {
+ // Perform alterations.
+
+
+ }
+}
+
+//This is wrong approach, because the hook is fired for all forms indiscriminately So we use Below approch for specific for id alter
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function learn_services_form_salutation_configuration_form_alter(&$form,\Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Perform alterations.
+  //We see the custom module form making, adding new form elements, changing existing ones, and so on. But what about our validation and submit handlers (those methods that get called when the form is submitted). How can those be altered?
+  $form['#submit'][] = 'learn_services_salutation_configuration_form_submit';
+}
+
+// And the callback we added to the #submit array above can look like this:
+/**
+ * Custom submit handler for the form_salutation_configuration form.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function learn_services_salutation_configuration_form_submit(&$form,
+\Drupal\Core\Form\FormStateInterface $form_state) {
+  // Do something when the form is submitted.
+  \Drupal::Messenger()->addMessage(t('This is from submit handler'));
+} 
+
+// Finally, when it comes to the validation handler, it works exactly the same as with the submit handler, but it all happens under the #validate array key.
+// Feel free to experiment with altering existing forms and inspect the variables they receive as arguments. 
+
+
+

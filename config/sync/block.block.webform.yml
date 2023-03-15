@@ -1,0 +1,25 @@
+uuid: f98a9d3b-4e7d-4ab2-ac88-e0b0d7540812
+langcode: en
+status: false
+dependencies:
+  config:
+    - webform.webform.enquiry2
+  module:
+    - webform
+  theme:
+    - bartik
+id: webform
+theme: bartik
+region: sidebar_first
+weight: 0
+provider: null
+plugin: webform_block
+settings:
+  id: webform_block
+  label: Enquiry
+  label_display: '0'
+  provider: webform
+  webform_id: enquiry2
+  default_data: ''
+  redirect: false
+visibility: {  }

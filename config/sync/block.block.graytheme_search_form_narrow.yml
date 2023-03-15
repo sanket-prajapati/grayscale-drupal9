@@ -1,0 +1,23 @@
+uuid: a5f6b6ba-0124-4690-b4b8-5834ddce61a5
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - graytheme
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: graytheme_search_form_narrow
+theme: graytheme
+region: navigation
+weight: -5
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

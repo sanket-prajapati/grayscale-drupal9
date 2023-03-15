@@ -1,0 +1,5 @@
+name: Learn Services
+description: This is implementation of services in drupal
+core_version_requirement: ^8 || ^9
+type: module
+package: Custom modules

@@ -1,0 +1,17 @@
+uuid: 35786a39-2a30-4cfc-84e3-7b8339c3cc02
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'layout special'
+type: layout_special
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

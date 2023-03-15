@@ -1,0 +1,60 @@
+<?php
+
+function player_details_schema(){
+  $schema['player'] = array (
+    'description' => 'The table for player',
+    'fields' => array(
+      'id' => array(
+        'description' => 'ID',
+        'type' => 'serial',
+        'length' => 11,
+        'not null' => TRUE,
+      ),
+
+      'name' => array(
+        'description' => 'Name',
+        'type' => 'varchar_ascii',
+        'length' => 100,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+
+      'gender' => array(
+        'description' => 'Gender',
+        'type' => 'varchar_ascii',
+        'length' => 20,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+
+      'phone' => array(
+        'description' => 'Phone',
+        'type' => 'bigint',
+        'length' => 11,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+
+      'address' => array(
+        'description' => 'Address',
+        'type' => 'text',
+        'not null' => TRUE,
+      ),
+    ),
+
+    'primary key' => [
+        'id',
+    ],
+  );
+
+  return $schema;
+}
+
+
+?>
+
+
+
+
+
+

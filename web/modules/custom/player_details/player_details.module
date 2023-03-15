@@ -1,0 +1,652 @@
+<?php
+
+function player_details_theme($existing, $type, $theme, $path){
+  return [
+    'test' => [
+        'variables' => [
+            'data' => NULL,
+            'title' => NULL,
+        ],
+    ],
+
+    'player-form' => [
+      'variables' => [
+        'formData' => NULL,
+        'title' => NULL,
+      ],
+    ],
+
+    // 'list-page' => [
+    //   'variables' =>[
+    //     'item' => NULL,
+    //     'titlte' => NULL,
+    //   ],
+    // ],
+
+    'attribute-ckeck' => [
+      'variables' =>[
+        'attributes'=> NULL,
+        'titlte' => NULL,
+      ],
+    ],
+
+  ];
+}
+
+// We change article submit button to the feedback
+function player_details_form_alter(&$form,\Drupal\Core\Form\FormStateInterface $form_state, $form_id){
+  
+  if($form_id=='comment_comment_form'){
+    // dump($form);
+    // exit;
+    $form['actions']['submit']['#value']=t('Feedback');
+  }
+  
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */ 
+function player_details_article_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+ if ($entity->getEntityTypeId() === 'node' && $view_mode ==='full') {
+  $build['disclaimer'] = [ '#markup' => t('The content provided is for general
+  information purposes only.'),
+  '#weight' => 100
+  ];
+ }
+} 
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+// function player_details_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+
+//   // Add a css class to widget form elements for all fields of type mytype.
+//   $field_definition = $context['items']
+//     ->getFieldDefinition();
+//   if ($field_definition
+//     ->getType() == 'article') {
+
+//     // Be sure not to overwrite existing attributes.
+//     $element['#attributes']['class'][] = 'myclass';//not works
+//   }
+// }
+
+function player_details_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+  // dump($element);
+  // dump($context);
+  // exit;
+  $field_name = $context['items']->getName();
+  // echo $field_name;
+  // dump($context['widget']['fieldDefinition']['fieldStorage']['field_name']);//not works
+  $field = Drupal\field\Entity\FieldConfig::loadByName('node', 'page', $field_name);
+  // dump($field);
+  // exit;
+  if ($field) {
+    $element['#prefix'] = 'hello world';//works
+    // $element['#suffix'] = 'New hello world';//Works
+    // dump($element);
+    // exit;
+  }
+  
+}
+
+// function player_details_views_post_render(ViewExecutable $view, &$output, CachePluginBase $cache) {
+//   if($view->id()=='demo_view'){
+//     $date_new=new DrupalDateTime();
+//     $date_new=$date_new->formate('J, F, Y');
+//     $title= $view->getTitle();
+//     $view->setTitle($title. "-".$date_new);
+//   }
+// }//not works
+
+function player_details_block_access(\Drupal\block\Entity\Block $block, $operation, \Drupal\Core\Session\AccountInterface $account) {
+
+  // dump($account);//works
+  // dump($account->getRoles());//works
+    //   ^ array:2 [▼
+    //   0 => "authenticated"
+    //   1 => "teachers"
+    // ]
+
+  // if(in_array('teachers', $account->getRoles())){
+  //   return in_array('teachers', $account->getRoles()) ? \Drupal\Core\Access\AccessResult::forbidden() : \Drupal\Core\Access\AccessResult::allowed();
+  // }//Works
+  
+  // exit;
+  // dump($block);//Not use exit while dump
+  // exit;
+  // Example code that would prevent displaying the 'Powered by Drupal' block in
+  // a region different than the footer.
+  if ($operation == 'view' && $block->getPluginId() == 'system_powered_by_block') {
+    return \Drupal\Core\Access\AccessResult::forbiddenIf($block->getRegion() != 'footer')
+      ->addCacheableDependency($block);
+  }
+  if($operation == 'view' && $block->getPluginId()=='system_menu_block:footer'){
+    return \Drupal\Core\Access\AccessResult::forbiddenIf($block->getRegion() != 'footer')
+      ->addCacheableDependency($block);
+  }//works but if you put footer_fift then it not works
+
+  // No opinion.
+  return \Drupal\Core\Access\AccessResult::neutral();
+}
+
+function player_details_node_presave(Drupal\node\NodeInterface $entity) {
+  if ($entity->getType() == 'article') {
+     $entity->setTitle('Hello');
+     $entity->set('body', 'this is body');
+  } 
+} 
+
+function player_details_form_comment_comment_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Modification for the form with the given form ID goes here. For example, if
+  // FORM_ID is "user_register_form" this code would run only on the user
+  // registration form.
+  // Add a checkbox to registration form about agreeing to terms of use.
+  $form['name_here'] = [
+    '#type' => 'textfield',
+    '#title' => t('Added by form_alter'),
+    '#default_value' => '',
+    '#required' => false,
+    '#description' => 'This is demo field',
+    '#attributes' => [
+      'placeholder' => 'Enter Your text',
+    ],
+  ];
+    $form['terms_of_use'] = array(
+      '#type' => 'checkbox',
+      '#title' => t("I agree with the website's terms and conditions."),
+      '#required' => TRUE,
+    );
+  $form['name_here']['#disabled'] =true;
+}
+
+// See changes on user register
+function player_details_form_user_register_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $form['terms_of_use'] = array(
+    '#type' => 'checkbox',
+    '#title' => t("I agree with the website's terms and conditions."),
+    '#required' => TRUE,
+  );
+
+}
+
+function player_details_user_format_name_alter(&$name, $account) {
+
+  // Display the user's uid instead of name.
+  if ($account
+    ->id()) {
+    $name = t('User @uid', array(
+      '@uid' => $account
+        ->id(),
+    ));
+  }
+  // $uid=$account->id();
+  // dump($uid);//works
+  // $user = user_load($uid); 
+  // print($user->name);//not works
+  // exit;
+}//Works
+
+//when user login set message
+function player_details_user_login(Drupal\user\UserInterface $account) {
+  $config = \Drupal::config('system.date');
+  \Drupal::messenger()->addMessage('Say something else');
+}//works
+
+function player_details_user_logout($account) {
+  $config = \Drupal::config('system.date');
+  \Drupal::messenger()->addMessage('Say something when you logout');
+}//not works
+
+// See changes on edit user
+function player_details_form_user_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $form['terms_of_use'] = array(
+    '#type' => 'checkbox',
+    '#title' => t("I agree with the website's terms and conditions."),
+    '#required' => TRUE,
+  );
+
+}
+// function player_details_form_user_edit_form_alter(&$form, $form_state, $form_id) {
+//   $form['field_organization_reference']['widget'][0]['target_id']['#attributes']['disabled'] = 'disabled';
+// }
+
+
+
+// function player_details_field_formatter_info_alter(array &$info) {
+//   // dump($info);
+//   // exit;
+//   // Let a new field type re-use an existing formatter.
+//   // $fields['name'] = BaseFieldDefinition::create('string')
+//   //   ->setDisplayOptions('view', [
+//   //       'label' => 'hidden',
+//   //       'type' => 'string',
+//   //       'weight' => -4,
+//   //   ])
+//   //   ->setDisplayConfigurable('view', TRUE);
+//   // dump($info['text_default']['field_types'][2]);
+//   $info['text_default']['field_types'][2] = 'text_long';
+//   // dump($info['text_default']['field_types'][2]);
+//   // exit;
+// }
+
+/**
+ * Implements hook_entity_base_field_info_alter().
+ */
+function player_details_entity_base_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type) {
+  // dump($fields);
+  // dump($entity_type);
+  // exit; 
+  if($entity_type->id() == 'node' ) {
+    // dump($fields);
+    // dump($fields['highlight']);
+    $fields['highlight']->setLabel(t('Highlight_update'))
+      ->setDescription(t('Whether or not the node is highlighted and Now update.'));
+    // exit;
+  }
+  // exit;
+} 
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function player_details_entity_base_field_info(Drupal\Core\Entity\EntityTypeInterface $entity_type) {
+  $fields = array();
+  
+  // dump($entity_type);
+  // exit;
+
+  // Add a 'Highlight' base field to all node types.
+  if ($entity_type->id() === 'node') {
+    $fields['highlight'] = Drupal\Core\Field\BaseFieldDefinition::create('boolean')
+      ->setLabel(t('Highlight'))
+      ->setDescription(t('Whether or not the node is highlighted.'))
+      ->setRevisionable(TRUE)
+      ->setTranslatable(TRUE)
+      ->setDisplayOptions('form', array(
+        'type' => 'boolean_checkbox',
+        'settings' => array(
+          'display_label' => TRUE,
+        ),
+      ))
+      ->setDisplayConfigurable('form', TRUE);
+
+
+    // exit;
+    $fields['newfield'] = Drupal\Core\Field\BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('New field'))
+      ->setSetting('target_type', 'node')
+      ->setSetting('handler', 'default')
+      ->setRequired(FALSE);
+  }
+
+  return $fields;
+}
+
+/*
+ * Implements hook_ENTITY_TYPE_prepare_form
+ */
+// I want to modify the contents of a field of an Article node just before it comes up for editing
+function player_details_node_prepare_form(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Form\FormStateInterface $form_state) {
+  // dump($entity);
+  // dump($operation);
+  // exit;
+  if ($operation == 'edit') {
+     $entity->setTitle('Hello2');
+     $entity->set('body', 'this is body2');
+  }
+  // dump($entity);
+  // exit;
+}
+
+// function player_details_views_plugins_style_alter(array &$plugins) {
+
+//   // Change the theme hook of a plugin.
+//   $plugins['html_list']['theme'] = 'custom_views_view_list';
+// }//Works but we required twig file of 'custom_views_view_list.html.twig' But I not know what inside twig file
+
+
+
+function player_details_toolbar() {
+  $items = array();
+
+  // Add a search field to the toolbar. The search field employs no toolbar
+  // module theming functions.
+  $items['global_search'] = array(
+    '#type' => 'toolbar_item',
+    'tab' => array(
+      '#type' => 'search',
+      '#attributes' => array(
+        'placeholder' => t('Search the site'),
+        'class' => array(
+          'search-global',
+        ),
+      ),
+    ),
+    '#weight' => 200,
+    // Custom CSS, JS or a library can be associated with the toolbar item.
+    '#attached' => array(
+      'library' => array(
+        'search/global',
+      ),
+    ),
+  );
+
+  // $items['commerce'] = array(
+  //   '#type' => 'toolbar_item',
+  //   'tab' => array(
+  //     '#type' => 'link',
+  //     '#title' => t('Shopping cart'),
+  //     '#url' => Url::fromRoute('<front>'),
+  //     '#options' => array(
+  //       'attributes' => array(
+  //         'title' => t('Shopping cart'),
+  //       ),
+  //     ),
+  //   ),
+  //   'tray' => array(
+  //     '#heading' => t('Shopping cart actions'),
+  //     'shopping_cart' => array(
+  //       '#theme' => 'item_list',
+  //       '#items' => array(),
+  //     ),
+  //   ),
+  //   '#weight' => 150,
+  // );//Url not works
+
+  return $items;
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function player_details_views_data() {
+  $data = [];
+  // Players table
+  $data['players'] = [];
+  $data['players']['table']['group'] = t('Sports');
+  $data['players']['table']['base'] = [
+    'field' => 'id',
+    'title' => t('Players'),
+    'help' => t('Holds player data.'),
+  ];
+  // Player fields
+  $data['players']['id'] = [
+    'title' => t('ID'),
+    'help' => t('The unique player ID.'),
+    'field' => [
+      'id' => 'numeric',
+    ],
+  ];
+  $data['players']['name'] = [
+    'title' => t('Name'),
+    'help' => t('The name of the player.'),
+    'field' => [
+      'id' => 'standard',
+    ],
+  ]; 
+  $data['players']['data'] = [
+    'title' => t('Data'),
+    'help' => t('The player data.'),
+    'field' => [
+      'id' => 'serialized',
+    ],
+  ]; 
+  $data['players']['team_id'] = [
+    'title' => t('Team ID'),
+    'help' => t('The unique team ID of the player.'),
+    'field' => [
+      'id' => 'numeric',
+    ],
+    'relationship' => [
+      'base' => 'teams',
+      'base field' => 'id',
+      'id' => 'standard',
+      'label' => t('Player team'),
+    ],
+    'sort' => [
+      'id' => 'standard',
+    ],
+    'filter' => [
+    'id' => 'standard',
+    ],
+  ]; 
+  // Teams table
+  $data['teams'] = [];
+  $data['teams']['table']['group'] = t('Sports');
+  // Teams fields
+  $data['teams']['name'] = [
+    'title' => t('Name'),
+    'help' => t('The name of the team.'),
+    'field' => [
+      'id' => 'standard',
+    ],
+  ];  
+  
+  return $data;
+} 
+
+/**
+ * Implements hook_mail().
+ */
+function player_details_mail($key, &$message, $params) {
+  // dump($key);
+  // exit;
+  switch ($key) {
+    case 'player_details_log':
+    $message['from'] = \Drupal::config('system.site')->get('mail');
+    $message['subject'] = t('There is an error on your
+    website');
+    $message['body'][] = $params['message'];
+    break;
+  }
+}
+
+function player_details_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
+  // dump($entity);
+  // exit;
+  // Insert the new entity into a fictional table of all entities.
+  \Drupal::database()
+    ->insert('example_entity')
+    ->fields([
+    'type' => $entity
+      ->getEntityTypeId(),
+    'id' => $entity
+      ->id(),
+    'created' => REQUEST_TIME,
+    'updated' => REQUEST_TIME,
+  ])
+    ->execute();
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+// function player_details_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+
+//   // Only for my_view view.
+//   if ($view->id() == 'my_view') {
+//     // some action
+//   }
+// }
+
+// function player_details_views_query_alter(&$view, &$query){
+function player_details_views_query_alter($view, $query){
+  // dump($view);
+  // dump($query);
+  // exit;
+  // var_dump('foo');die;
+  // Only for demo_view view.
+  if ($view->id() == 'demo_view') {
+    
+    // some action
+  }
+}
+
+/**
+ * Implements hook_query_alter().
+ */
+function player_details_query_alter(Drupal\Core\Database\Query\AlterableInterface $query) {
+  // print_r($query);
+  // dump($query);
+  // exit;
+  // Methods for reading the tags, such as hasTag(), hasAnyTag(),or hasAllTags().
+  if (!$query->hasTag('player_query')) {
+    //perform some opration which is not affect to your query
+    return;
+    
+  }
+  // Alter query
+  $query->join('teams', 't', 't.id = p.team_id');
+  $query->addField('t', 'name', 'team_name');
+  $query->condition('t.name', 'My Team');
+  // dump($query);
+  // exit;
+}
+
+// function player_details_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Session\AccountInterface $account) {
+//   dump($op);
+//   // dump($account);
+//   dump($node);
+//   $type = $node->bundle();//article
+//     dump($type);//article
+//     // exit;
+//   switch ($op) {
+//     case 'create':
+//       return Drupal\Core\Access\AccessResult::allowedIfHasPermission($account, 'create ' . $type . ' content');
+//     case 'update':
+//       if ($account
+//         ->hasPermission('edit any ' . $type . ' content', $account)) {
+//         return Drupal\Core\Access\AccessResult::allowed()
+//           ->cachePerPermissions();
+//       }
+//       else {
+//         return Drupal\Core\Access\AccessResult::allowedIf($account
+//           ->hasPermission('edit own ' . $type . ' content', $account) && $account
+//           ->id() == $node
+//           ->getOwnerId())
+//           ->cachePerPermissions()
+//           ->cachePerUser()
+//           ->addCacheableDependency($node);
+//       }
+//     case 'delete':
+//       if ($account
+//         ->hasPermission('delete any ' . $type . ' content', $account)) {
+//         return Drupal\Core\Access\AccessResult::allowed()
+//           ->cachePerPermissions();
+//       }
+//       else {
+//         return Drupal\Core\Access\AccessResult::allowedIf($account
+//           ->hasPermission('delete own ' . $type . ' content', $account) && $account
+//           ->id() == $node
+//           ->getOwnerId())
+//           ->cachePerPermissions()
+//           ->cachePerUser()
+//           ->addCacheableDependency($node);
+//       }
+//     default:
+
+//       // No opinion.
+//       return Drupal\Core\Access\AccessResult::neutral();
+//   }
+//   // exit;
+// }
+
+// function player_details_node_access(\Drupal\node\NodeInterface $node, $op, \Drupal\Core\Session\AccountInterface $account) {
+//   $type = $node->getType();
+//   // dump($node);
+//   // dump($type);
+//   // exit;
+
+//   if ($type == 'article' ) {
+//     // print_r(arg(3));
+//     // dump($type);
+//     return Drupal\Core\Access\AccessResult::forbidden()
+//       ->addCacheableDependency($node);
+//     // exit;
+//   }
+// //   else {
+// //     // ... neutral
+// //     return Drupal\Core\Access\AccessResult::forbidden();
+// //   }
+// }//not works
+
+// function player_details_local_tasks_alter(&$local_tasks) {
+
+//   // dump($local_tasks);
+
+//   // Remove a specified local task plugin.
+//   unset($local_tasks['player_details.createPlayer']);
+// }//works see on page web/player-form-by-controller
+
+// For view, update, and delete opration
+// function player_details_node_access(\Drupal\node\NodeInterface $node, $operation, \Drupal\Core\Session\AccountInterface $account){
+// // dump($account);
+//   $access = $node->access('view', $account);
+//   // dump($access);
+//   if($access){
+//     echo "Great works, This is arrived from hook_node_access";//If access return true then this is printed
+//   }
+// //  // Perform access check and return an AccessResultInterface instance.
+// } //Works but for only administator user only may be some access issue, When this is uncomment any other user not allow to access site
+
+
+// For creat opration
+/**
+ * Implements hook_entity_create_access().
+ */
+// function player_details_entity_create_access(\Drupal\Core\Session\AccountInterface $account, array $context, $entity_bundle) {
+//  // Perform access check and return an AccessResultInterface instance.
+  
+// }
+
+// function player_details_views_analyze(Drupal\views\ViewExecutable $view) {
+//   $messages = array();
+//   if ($view->display_handler->options['pager']['type'] == 'none') {
+//     $messages[] = Drupal\views\Analyzer::formatMessage(t('This view has no pager. This could cause performance issues when the view contains many items.'), 'warning');
+//   }
+//   return $messages;
+// }
+
+
+/**
+ * Implements hook_cron().
+ */
+function player_details_cron() {
+  // To see changes insert new record in teams table, make sure that which is not match in players table, i.e, id not match
+  // This new inserted record deleted
+  $database = \Drupal::database();
+  $result = $database->query("SELECT [id] FROM {teams} WHERE [id] NOT IN (SELECT [team_id] FROM {players} WHERE [team_id] IS NOT NULL)")->fetchAllAssoc('id');
+  // dump($result);
+  // exit;
+  if (!$result) {
+  return;
+  }
+  $ids = array_keys($result);
+  $database->delete('teams')
+    ->condition('id', $ids, 'IN')
+    ->execute();
+ }
+
+ /**
+ * Implements hook_file_download().
+ */
+// function player_details_file_download($uri) {
+//   dump($uri);
+//   // exit;
+//   $file_system = \Drupal::service('file_system');
+//   $dir = $file_system->dirname($uri);
+//   if ($dir !== 'private://pdfs') {
+//     return NULL;
+//   }
+//   if (!\Drupal::currentUser()->hasPermission('administer site configuration')) {
+//     return -1;
+//   } 
+//   return [
+//     'Content-type' => 'application/pdf',
+//   ];
+// } //not works
+?>

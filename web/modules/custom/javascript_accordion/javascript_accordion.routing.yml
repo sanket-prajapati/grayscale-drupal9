@@ -1,0 +1,7 @@
+javascript_accordion.javascript_demo:
+  path: '/javascript-demo'
+  defaults: 
+    _controller: 'Drupal\javascript_accordion\Controller\javascriptExample::javascript_demo'
+    _title: 'Javascript Example'
+  requirements:
+    _permission: 'access content'

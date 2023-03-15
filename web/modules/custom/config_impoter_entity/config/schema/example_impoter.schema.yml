@@ -1,0 +1,12 @@
+config_impoter_entity.example_impoter.*:
+  type: config_entity
+  label: 'Example impoter config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string

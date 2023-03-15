@@ -1,0 +1,6 @@
+name: 'productEntity'
+type: module
+description: 'This is module for content entity type creation'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'custom modules'

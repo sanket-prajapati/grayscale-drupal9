@@ -1,0 +1,29 @@
+uuid: 644cdb4e-2fca-4fee-871e-95e13a40d405
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.media
+    - field.storage.block_content.field_media_library
+    - taxonomy.vocabulary.image_galary
+id: block_content.media.field_media_library
+field_name: field_media_library
+entity_type: block_content
+bundle: media
+label: 'Media library'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      image_galary: image_galary
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains example_queue.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function example_queue_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the example_queue module.
+    case 'help.page.example_queue':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This is for queue and it&#039;&#039;s process') . '</p>';
+      return $output;
+
+    default:
+  }
+}

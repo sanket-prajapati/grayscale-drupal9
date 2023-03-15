@@ -1,0 +1,9 @@
+player_details.getPlayer:
+  route_name: player_details.getPlayer
+  title: 'getPlayer local taks tab'
+  base_route: player_details.getPlayer
+player_details.createPlayer:
+  route_name: player_details.createPlayer
+  title: 'Create Player tab'
+  base_route: player_details.getPlayer
+  weight: 100

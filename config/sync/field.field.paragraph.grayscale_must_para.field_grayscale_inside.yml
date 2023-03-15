@@ -1,0 +1,34 @@
+uuid: cd415c6a-a04b-40d8-b693-f339fb75b7a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_grayscale_inside
+    - paragraphs.paragraphs_type.grayscale_inside_para
+    - paragraphs.paragraphs_type.grayscale_must_para
+  module:
+    - entity_reference_revisions
+id: paragraph.grayscale_must_para.field_grayscale_inside
+field_name: field_grayscale_inside
+entity_type: paragraph
+bundle: grayscale_must_para
+label: 'Grayscale inside'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      grayscale_inside_para: grayscale_inside_para
+    negate: 0
+    target_bundles_drag_drop:
+      grayscale_inside_para:
+        weight: 3
+        enabled: true
+      grayscale_must_para:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions

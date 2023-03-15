@@ -1,0 +1,8 @@
+uuid: 13eb06ab-cf12-4a44-bde5-23b2f27beba2
+langcode: en
+status: true
+dependencies: {  }
+name: 'Image galary'
+vid: image_galary
+description: ''
+weight: 0

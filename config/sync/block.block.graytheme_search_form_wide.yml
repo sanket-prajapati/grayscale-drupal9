@@ -1,0 +1,23 @@
+uuid: 39ee2603-018e-4ea0-98fa-9810064d0be5
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+  theme:
+    - graytheme
+_core:
+  default_config_hash: imMyHD6LYci0gtXq56qr9ZKGHzbEG9uFydrN5EhKtSU
+id: graytheme_search_form_wide
+theme: graytheme
+region: navigation
+weight: -6
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (wide)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

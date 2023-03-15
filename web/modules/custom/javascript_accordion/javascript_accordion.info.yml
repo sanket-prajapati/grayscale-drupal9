@@ -1,0 +1,8 @@
+name: Javascript accordion
+description: Javascript accordion example
+type: module
+core_version_requirement: ^8 || ^9
+package: Custom modules
+dependencies:
+  - drupal:node
+  - examples:examples

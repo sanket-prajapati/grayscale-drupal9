@@ -1,0 +1,6 @@
+name: 'example_fieldtype'
+type: module
+description: 'This is for adding field type in entity type'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'custom modules'

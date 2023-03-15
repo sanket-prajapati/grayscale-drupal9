@@ -1,0 +1,10 @@
+field.widget.settings.example_widget:
+  type: mapping
+  label: 'Demo widget widget settings'
+  mapping:
+    size:
+      type: integer
+      label: 'Size'
+    placeholder:
+      type: textfield
+      label: 'Placeholder'

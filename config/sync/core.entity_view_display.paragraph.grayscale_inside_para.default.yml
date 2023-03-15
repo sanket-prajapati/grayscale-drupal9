@@ -1,0 +1,43 @@
+uuid: 99b5e3e4-e430-422b-a85a-32232d1cb7bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grayscale_inside_para.field_sub_description
+    - field.field.paragraph.grayscale_inside_para.field_sub_image
+    - field.field.paragraph.grayscale_inside_para.field_subtitle
+    - paragraphs.paragraphs_type.grayscale_inside_para
+  module:
+    - image
+id: paragraph.grayscale_inside_para.default
+targetEntityType: paragraph
+bundle: grayscale_inside_para
+mode: default
+content:
+  field_sub_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_sub_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_subtitle:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

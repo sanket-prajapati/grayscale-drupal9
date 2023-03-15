@@ -1,0 +1,20 @@
+uuid: 6d3d93b4-1506-4186-a93e-645aa75dd759
+langcode: en
+status: false
+dependencies:
+  theme:
+    - graytheme
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: graytheme_page_title
+theme: graytheme
+region: header
+weight: -4
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

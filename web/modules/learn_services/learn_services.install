@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+
+function learn_services_schema(){
+  $schema['customForm'] = [
+    'fields' => [
+      'id' => [
+        'description'=> 'Primary Identifier for the record',
+        'type' => 'serial',
+        'not null' => true,
+      ],
+      'name' => [
+        'description' => 'User\'s name',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => true,
+        'default'=> '',
+      ],
+      'email' => [
+        'description' => 'User\'s email',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => true,
+        'default'=> '',
+      ],
+      'created' => [
+        'description' => 'Time for when form was submited',
+        'type' => 'int',
+        'not null' => true,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => [
+      'id'
+    ],
+  ];
+
+  return $schema;
+}

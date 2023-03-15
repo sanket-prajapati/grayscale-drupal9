@@ -1,0 +1,18 @@
+<?php
+/**
+ * Adds the "location" field to the teams table.
+ */
+// function practice_module_update_9001(&$sandbox) {
+function practice_module_update_9001(&$sandbox) {
+    // dump($sandbox);
+    // exit;
+  $field = [
+    'description' => 'The team location.',
+    'type' => 'varchar',
+    'length' => 255,
+  ];
+  $schema = \Drupal::database()->schema();
+  $schema->addField('teams', 'location', $field);
+//   return $schema;
+}
+?>

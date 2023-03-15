@@ -1,0 +1,10 @@
+uuid: d22aa1ea-77c1-4e67-8698-2380df210f44
+langcode: en
+status: true
+dependencies: {  }
+id: grayscale_must_para
+label: 'Grayscale must para'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

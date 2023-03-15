@@ -1,0 +1,22 @@
+uuid: ccf19611-811f-4197-a222-ff4e17d5a1f6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - graytheme
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: graytheme_content
+theme: graytheme
+region: content
+weight: -7
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

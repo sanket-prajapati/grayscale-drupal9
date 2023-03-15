@@ -1,0 +1,100 @@
+player_details.check:
+  path: '/player-form'
+  defaults: 
+    _controller: '\Drupal\player_details\Controller\PlayerController::check'
+    _title: 'Checking contoller'
+  requirements:
+    _permission: 'access content'
+
+player_details.playerForm:
+  path: '/player-form-by-form'
+  defaults:
+    _form: '\Drupal\player_details\Form\PlayerForm'  
+    _title: 'Player Form'
+  requirements: 
+    _permission: 'access content'
+
+player_details.createPlayer: 
+  path: '/player-form-by-controller'
+  defaults: 
+    _controller: '\Drupal\player_details\Controller\PlayerController::createPlayer'
+    _title: 'Player Form by Controller'
+  requirements: 
+    _permission: 'access content'
+    # _permission: "my custom permission+administer site configuration"
+    # _role: students + teachers 
+    # _role: "administrator"
+    # _role: "editor,administrator"
+    # _role: "editor+administrator"
+    # _custom_access: '\Drupal\player_details\Controller\PlayerController::access' #not works it show access is not callable
+
+
+player_details.getPlayer: 
+  path: '/player-list'
+  defaults: 
+    _controller: '\Drupal\player_details\Controller\PlayerController::getPlayer'
+    _title: 'Players Lists'
+  requirements: 
+    _permission: 'access content'
+
+player_details.updatePlayer: 
+  path: '/edit-player/{id}'
+  defaults: 
+    # _controller: '\Drupal\player_details\Controller\PlayerController::getPlayer'
+    _form: '\Drupal\player_details\Form\EditPlayerForm'
+    _title: 'Edit Now'
+  requirements: 
+    _permission: 'access content'
+
+player_details.deletePlayer:
+  path: '/delete-player/{id}'
+  defaults:
+    _controller: '\Drupal\player_details\Controller\PlayerController::deletePlayer'
+  requirements:
+    _permission: 'access content'
+
+
+player_details.listRender:
+  path: '/list-page'
+  defaults: 
+    _controller: '\Drupal\player_details\Controller\PlayerController::listRender'
+  requirements:
+    _permission: 'access content' 
+
+player_details.linksRender:
+  path: '/links-render'
+  defaults: 
+    _controller: '\Drupal\player_details\Controller\PlayerController::linksRender'
+  requirements:
+    _permission: 'access content' 
+
+player_details.setAttributeBytheme:
+  path: '/ckeck-attributes'
+  defaults: 
+    _controller: '\Drupal\player_details\Controller\PlayerController::setAttributeBytheme'
+  requirements:
+    _permission: 'access content' 
+
+player_details.entityApi:
+  path: '/entity-api'
+  defaults: 
+    _controller: '\Drupal\player_details\Controller\PlayerController::entityApi'
+  requirements:
+    _permission: 'access content' 
+
+player_details.databaseCheck:
+  path: '/database-check'
+  defaults: 
+    _controller: '\Drupal\player_details\Controller\PlayerController::databaseCheck'
+  requirements:
+    _permission: 'access content' 
+
+
+player_details.insertOperation:
+  path: '/insert-operation'
+  defaults: 
+    _controller: '\Drupal\player_details\Controller\PlayerController::insertOperation'
+  requirements:
+    _permission: 'access content'
+
+ 

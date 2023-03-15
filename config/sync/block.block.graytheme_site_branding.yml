@@ -1,0 +1,25 @@
+uuid: 3c8d7081-6dbd-4b6c-b072-c45a2515fb07
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - graytheme
+_core:
+  default_config_hash: n_nlgjggHVfQt2H__zvLOKB2YtjPDbQ5tHijF9LE1aM
+id: graytheme_site_branding
+theme: graytheme
+region: navigation
+weight: -8
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: false
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

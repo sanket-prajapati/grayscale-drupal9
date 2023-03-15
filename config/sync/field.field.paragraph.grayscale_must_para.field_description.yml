@@ -1,0 +1,19 @@
+uuid: 4ba5d0f2-ee22-4773-b22a-de6e2fcf4760
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.grayscale_must_para
+id: paragraph.grayscale_must_para.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: grayscale_must_para
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

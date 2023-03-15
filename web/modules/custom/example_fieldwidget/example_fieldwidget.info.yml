@@ -1,0 +1,5 @@
+name: 'example_fieldwidget'
+type: module
+description: 'This is for field widget'
+core: 8.x
+package: 'Custom modules'

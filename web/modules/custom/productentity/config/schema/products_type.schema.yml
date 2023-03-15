@@ -1,0 +1,12 @@
+productentity.products_type.*:
+  type: config_entity
+  label: 'Product list here type config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string

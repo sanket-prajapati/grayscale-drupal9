@@ -1,0 +1,10 @@
+name: Ajax form example
+description: form with ajax dropdown
+type: module
+core_version_requirement: ^8 || ^9
+package: Custom modules
+
+# name: Ajax Example
+# type: module
+# core: '8.x'
+# description: 'Custom db'

@@ -1,0 +1,5 @@
+name: 'example_queue'
+type: module
+description: 'This is for queue and it''s process'
+core_version_requirement: ^8 || ^9
+package: 'Custom modules'

@@ -1,0 +1,52 @@
+uuid: 6536d4b3-d22f-4768-958d-2071d0093dcb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.grayscale_must_content.field_btn_link
+    - field.field.node.grayscale_must_content.field_description
+    - field.field.node.grayscale_must_content.field_para_inside_content
+    - node.type.grayscale_must_content
+  module:
+    - entity_reference_revisions
+    - link
+    - user
+id: node.grayscale_must_content.default
+targetEntityType: node
+bundle: grayscale_must_content
+mode: default
+content:
+  field_btn_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_para_inside_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

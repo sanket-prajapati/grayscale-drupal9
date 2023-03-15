@@ -1,0 +1,23 @@
+uuid: bbb4f5a2-6895-4b13-bfea-ae84d1dc5623
+langcode: en
+status: false
+dependencies:
+  module:
+    - node
+  theme:
+    - graytheme
+_core:
+  default_config_hash: 0gq3VPg-_UM69FCCWurLFIrrnIjC2HLKhwo9iQNtcUo
+id: graytheme_syndicate
+theme: graytheme
+region: navigation
+weight: -2
+provider: null
+plugin: node_syndicate_block
+settings:
+  id: node_syndicate_block
+  label: 'RSS feed'
+  label_display: '0'
+  provider: node
+  block_count: 10
+visibility: {  }

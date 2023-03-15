@@ -1,0 +1,17 @@
+
+# Product list here menu items definition
+entity.products.collection:
+  title: 'Product list here list'
+  route_name: entity.products.collection
+  description: 'List Product list here entities'
+  parent: system.admin_structure
+  weight: 100
+
+
+# Product list here type menu items definition
+entity.products_type.collection:
+  title: 'Product list here type'
+  route_name: entity.products_type.collection
+  description: 'List Product list here type (bundles)'
+  parent: system.admin_structure
+  weight: 99

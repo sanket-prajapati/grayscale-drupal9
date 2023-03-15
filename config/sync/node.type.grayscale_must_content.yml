@@ -1,0 +1,17 @@
+uuid: 97b412ba-ec3d-437d-ac15-68e7b7adadef
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Grayscale must content'
+type: grayscale_must_content
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

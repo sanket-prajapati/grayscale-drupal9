@@ -1,0 +1,9 @@
+# entity.product.collection:
+#   path: '/admin/structure/product'
+#   defaults: 
+#     # _entity: '\Drupal\products\Entity\Product::Product'
+#     # _entity_form: '\Drupal\products\Entity\Product::Product'
+#     _entity_form: '\Drupal\products\Form\ProductForm'
+#   requirements:
+#     _permission: 'access content'
+

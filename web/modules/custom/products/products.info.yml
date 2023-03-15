@@ -1,0 +1,6 @@
+name: Product
+type: module
+description: 'Product type entity'
+package: custom
+core: 8.x
+core_version_requirement: ^8 || ^9

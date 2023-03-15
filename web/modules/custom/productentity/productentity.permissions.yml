@@ -1,0 +1,31 @@
+add product list here entities:
+  title: 'Create new Product list here entities'
+
+administer product list here entities:
+  title: 'Administer Product list here entities'
+  description: 'Allow to access the administration form to configure Product list here entities.'
+  restrict access: true
+
+delete product list here entities:
+  title: 'Delete Product list here entities'
+
+edit product list here entities:
+  title: 'Edit Product list here entities'
+
+view published product list here entities:
+  title: 'View published Product list here entities'
+
+view unpublished product list here entities:
+  title: 'View unpublished Product list here entities'
+
+view all product list here revisions:
+  title: 'View all Product list here revisions'
+
+revert all product list here revisions:
+  title: 'Revert all Product list here revisions'
+  description: 'Role requires permission <em>view Product list here revisions</em> and <em>edit rights</em> for product list here entities in question or <em>administer product list here entities</em>.'
+
+delete all product list here revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Product list here revisions</em> and <em>delete rights</em> for product list here entities in question or <em>administer product list here entities</em>.'
+
